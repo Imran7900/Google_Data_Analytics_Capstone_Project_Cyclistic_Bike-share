@@ -74,11 +74,11 @@ full_data <- na.omit(full_data)
 
 
 #----------Convert trip_duration to numeric to calculate correctly
-q1 <- mutate(q1_df, trip_duration=as.numeric(trip_duration))
-q2 <- mutate(q2_df, trip_duration=as.numeric(trip_duration))
-q3 <- mutate(q3_df, trip_duration=as.numeric(trip_duration))
-q4 <- mutate(q4_df, trip_duration=as.numeric(trip_duration))
-full_data <- mutate(full_df, trip_duration2=as.numeric(trip_duration))
+q1 <- mutate(q1, trip_duration=as.numeric(trip_duration))
+q2 <- mutate(q2, trip_duration=as.numeric(trip_duration))
+q3 <- mutate(q3, trip_duration=as.numeric(trip_duration))
+q4 <- mutate(q4, trip_duration=as.numeric(trip_duration))
+full_data <- mutate(full_data, trip_duration2=as.numeric(trip_duration))
 
 
 
