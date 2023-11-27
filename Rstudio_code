@@ -1,3 +1,5 @@
+#----------Packages to be installed 
+
 install.packages("tidyverse")
 library(readr)
 library(rmarkdown)
@@ -7,7 +9,7 @@ library(readr)
 library(writexl)
 library(data.table) 
 
-
+#----------updating the csv file
 jan <- read_csv("202101-divvy-tripdata.csv")
 feb <- read_csv("202102-divvy-tripdata.csv")  
 mar<- read_csv("202103-divvy-tripdata.csv")  
@@ -22,7 +24,7 @@ nov <- read_csv("202111-divvy-tripdata.csv")
 dec <- read_csv("202112-divvy-tripdata.csv")  
 
 
-#----------Check column names for consistency
+#----------Check column names to make sure the there is no error in colunm names 
 colnames(jan)
 colnames(feb)
 colnames(mar)
@@ -61,7 +63,7 @@ str(full_data)
 
 
 
-#----------Remove rows with missing data
+#----------Removing the rows with missing data  
 q1 <- na.omit(q1)
 q2 <- na.omit(q2)
 q3 <- na.omit(q3)
@@ -90,7 +92,7 @@ remove(q1_df, q2_df, q3_df, q4_df)
 
 #---------------Plots
 
-#----------Total rides per year by member/casual
+#----------Total rides per year by member and casual
 full_data %>% 
   group_by(member_casual) %>% 
   summarise(number_of_rides = n()) %>%
@@ -108,7 +110,7 @@ full_data %>%
 
 
 
-#----------Rides per month by member/casual
+#----------Rides per month by member and casual
 full_data$month <- ordered(full_data$month, levels=c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December")) #rearrange months to January -> December 
 full_data %>% 
   group_by(member_casual, month) %>% 
@@ -127,7 +129,7 @@ full_data %>%
 
 
 
-#----------Rides per day by member/casual
+#----------Rides per day by member and casual
 full_data$week_days <- ordered(full_data$week_days, levels=c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")) #rearrange weekdays to monday -> sunday 
 full_data %>% 
   group_by(member_casual, week_days) %>% 
@@ -146,7 +148,7 @@ full_data %>%
 
 
 
-#----------Average trip duration by member/casual
+#----------Average trip duration by member and casual
 full_data %>% 
   group_by(member_casual) %>% 
   summarise(average_duration = mean(trip_duration)) %>% 
@@ -164,7 +166,7 @@ full_data %>%
 
 
 
-#----------Average trip duration per month by member/casual
+#----------Average trip duration per month by member and casual
 full_data %>% 
   group_by(member_casual, month) %>% 
   summarise(average_duration = mean(trip_duration)) %>% 
@@ -182,7 +184,7 @@ full_data %>%
 
 
 
-#----------Average trip duration per weekday by member/casual
+#----------Average trip duration per weekday by member and casual
 full_data %>% 
   group_by(member_casual, week_days) %>% 
   summarise(average_duration = mean(trip_duration)) %>% 
