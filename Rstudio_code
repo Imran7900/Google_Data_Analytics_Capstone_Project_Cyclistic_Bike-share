@@ -6,7 +6,6 @@ library(rmarkdown)
 library(ggplot2)
 library(dplyr)
 library(readr)
-library(writexl)
 library(data.table) 
 
 #----------updating the csv file
@@ -87,10 +86,6 @@ full_data <- mutate(full_df, trip_duration2=as.numeric(trip_duration))
 full_data <- rbind(q1, q2, q3, q4)
 remove(q1, q2, q3, q4)
 remove(q1_df, q2_df, q3_df, q4_df)
-
-
-
-#---------------Plots
 
 #----------Total rides per year by member and casual
 full_data %>% 
